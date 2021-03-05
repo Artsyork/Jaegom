@@ -11,8 +11,8 @@ import UIKit
 class TabBarExtention: UITabBarController {
     let button = UIButton(type: .custom)
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
+    override func viewDidLoad(){
+        super.viewDidLoad()
         
         if let newButton = UIImage(named: "calendartabicon"){
             self.addCenterButton(withImage: newButton,highlightImage: newButton)
@@ -20,37 +20,32 @@ class TabBarExtention: UITabBarController {
     }
     
     func addCenterButton(withImage buttonImage: UIImage, highlightImage : UIImage){
-        let paddingBottom : CGFloat = 20.0
-
-        let button = UIButton(type: .custom)
-        button.autoresizingMask = [.flexibleRightMargin, .flexibleTopMargin, .flexibleLeftMargin, .flexibleBottomMargin]
-        button.frame = CGRect(x: 0.0, y: 0.0, width: buttonImage.size.width / 1.4 , height: buttonImage.size.height / 1.4 )
+        let button = UIButton(frame: CGRect(x: 0.0, y: 0.0, width: 80, height: 80))
         button.setBackgroundImage(buttonImage, for: .normal)
         button.setBackgroundImage(highlightImage, for: .highlighted)
 
-        
-        let rectBoundTabbar = self.tabBar.bounds
+        let rectBoundTabbar = tabBar.bounds
         let xx = rectBoundTabbar.midX
-        let yy = rectBoundTabbar.midY - paddingBottom
+        let yy = rectBoundTabbar.midY - tabBar.safeAreaInsets.bottom - 10
+        
         button.center = CGPoint(x: xx, y: yy)
-
-        self.tabBar.addSubview(button)
-        self.tabBar.bringSubviewToFront(button)
+    
+        tabBar.addSubview(button)
+        tabBar.bringSubviewToFront(button)
 
         button.addTarget(self, action: #selector(handleTouchTabbarCenter), for: .touchUpInside)
 
-        if let count = self.tabBar.items?.count
-        {
+        if let count = tabBar.items?.count {
             let i = floor(Double(count / 2))
-            let item = self.tabBar.items![Int(i)]
+            let item = tabBar.items![Int(i)]
             item.title = ""
         }
     }
     
     @objc func handleTouchTabbarCenter(sender: UIButton){
-        if let count = self.tabBar.items?.count {
+        if let count = tabBar.items?.count {
             let i = floor(Double(count/2))
-            self.selectedViewController = self.viewControllers?[Int(i)]
+            selectedViewController = viewControllers?[Int(i)]
         }
     }
 }

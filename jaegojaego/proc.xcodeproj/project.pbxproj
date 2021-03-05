@@ -82,7 +82,6 @@
 		9B03EEB621F6FFD70081752B /* StockListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockListVC.swift; sourceTree = "<group>"; };
 		9B0F2B2221F83E33003DB228 /* StockTitleTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockTitleTableCell.swift; sourceTree = "<group>"; };
 		9B0F2B2421F84DC8003DB228 /* StockSubTitleTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockSubTitleTableCell.swift; sourceTree = "<group>"; };
-		9B2146E3231D0AFB0015BBBF /* proc-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "proc-Bridging-Header.h"; sourceTree = "<group>"; };
 		9B2146EA231D17D90015BBBF /* TabBarExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarExtention.swift; sourceTree = "<group>"; };
 		9B23A7E5220075A100BB2DE1 /* AddStoreVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStoreVC.swift; sourceTree = "<group>"; };
 		9B42914925EA1F33000E3B91 /* StockSubTitleTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StockSubTitleTableCell.xib; sourceTree = "<group>"; };
@@ -256,7 +255,6 @@
 		B838070820EDC00700A46B20 = {
 			isa = PBXGroup;
 			children = (
-				9B2146E3231D0AFB0015BBBF /* proc-Bridging-Header.h */,
 				610557FA2110366200E3175C /* Docs */,
 				B838071320EDC00700A46B20 /* proc */,
 				B838071220EDC00700A46B20 /* Products */,
