@@ -16,6 +16,7 @@ class StoreVC: UIViewController {
     
     private let viewModel = StoreViewModel()
     private let buttonBar = UIView()
+    
     private var switchSegment = UISegmentedControl()
     private var (selectSegmentNumber, selectIndex) = (0,0)
     private var searchArray : [Int : [Store]] = [:]
@@ -157,7 +158,7 @@ extension StoreVC {
         switchSegment.selectedSegmentIndex = selectSegmentNumber
         switchSegment.translatesAutoresizingMaskIntoConstraints = false
         
-        switchSegment.topAnchor.constraint(equalTo: view.topAnchor, constant: 104).isActive = true
+        switchSegment.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: storeSearchBar.bounds.height).isActive = true
         switchSegment.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         switchSegment.heightAnchor.constraint(equalToConstant: 46).isActive = true
         
@@ -172,24 +173,14 @@ extension StoreVC {
     }
     
     @objc private func segmentControlValueChanged(_ sender: UISegmentedControl){
-        UIView.animate(withDuration: 0.3){
-            self.buttonBar.frame.origin.x = (self.switchSegment.frame.width / CGFloat(self.switchSegment.numberOfSegments)) * CGFloat(self.switchSegment.selectedSegmentIndex)
+        let segNum = switchSegment.selectedSegmentIndex
+        let buttonBarFrame = switchSegment.bounds.width / CGFloat(3) * CGFloat(segNum)
+
+        UIView.animate(withDuration: 0.3){ [weak self] in
+            self?.buttonBar.frame.origin.x = buttonBarFrame
+            self?.selectSegmentNumber = segNum
         }
-        if switchSegment.selectedSegmentIndex == 0 {
-            UIView.animate(withDuration: 0.3, animations: {
-                self.selectSegmentNumber = 0
-            })
-        }
-        else if switchSegment.selectedSegmentIndex == 1 {
-            UIView.animate(withDuration: 0.3, animations: {
-                self.selectSegmentNumber = 1
-            })
-        }
-        else {
-            UIView.animate(withDuration: 0.3, animations: {
-                self.selectSegmentNumber = 2
-            })
-        }
+        
         storeListTV.reloadData()
     }
     

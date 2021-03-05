@@ -40,6 +40,23 @@ class AddStoreVC: UIViewController {
 }
 
 
+extension AddStoreVC {
+    private func setSubViews(){
+        stockDatePK.addTarget(self, action: #selector(getDateFromPicker), for: .valueChanged)
+        saveBtn.addTarget(self, action: #selector(addStock), for: .touchUpInside)
+    }
+    
+    private func setUpSegment(){
+        let saveTypeSegmentControl = BetterSegmentedControl(frame: CGRect(x: (view.frame.width - 310) / 2 , y: 40, width: 317, height: 56), segments: LabelSegment.segments(withTitles: ["실온", "냉장", "냉동"], normalBackgroundColor: .white, normalTextColor: UIColor.init(hex: "#7396D0"), selectedBackgroundColor: UIColor.init(hex: "#7396D0"), selectedTextColor: .white), index: 0, options: [.backgroundColor(UIColor.init(hex: "#7396D0")), .indicatorViewBackgroundColor(.white) ])
+        saveTypeSegmentControl.layer.borderWidth = 3
+        saveTypeSegmentControl.layer.borderColor = UIColor.init(hex: "#7396D0").cgColor
+        saveTypeSegmentControl.layer.cornerRadius = 7
+        saveTypeSegmentControl.addTarget(self, action: #selector(segmentValueChanged), for: .valueChanged)
+        saveStyleView.addSubview(saveTypeSegmentControl)
+    }
+}
+
+
 extension AddStoreVC : UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         moveTextField(textfield: textField, up: true)
@@ -61,21 +78,6 @@ extension AddStoreVC : UITextFieldDelegate {
 }
 
 
-extension AddStoreVC {
-    private func setSubViews(){
-        stockDatePK.addTarget(self, action: #selector(getDateFromPicker), for: .valueChanged)
-        saveBtn.addTarget(self, action: #selector(addStock), for: .touchUpInside)
-    }
-    
-    private func setUpSegment(){
-        let saveTypeSegmentControl = BetterSegmentedControl(frame: CGRect(x: (view.frame.width - 310) / 2 , y: 40, width: 317, height: 56), segments: LabelSegment.segments(withTitles: ["실온", "냉장", "냉동"], normalBackgroundColor: .white, normalTextColor: UIColor.init(hex: "#7396D0"), selectedBackgroundColor: UIColor.init(hex: "#7396D0"), selectedTextColor: .white), index: 0, options: [.backgroundColor(UIColor.init(hex: "#7396D0")), .indicatorViewBackgroundColor(.white) ])
-        saveTypeSegmentControl.layer.borderWidth = 3
-        saveTypeSegmentControl.layer.borderColor = UIColor.init(hex: "#7396D0").cgColor
-        saveTypeSegmentControl.layer.cornerRadius = 7
-        saveTypeSegmentControl.addTarget(self, action: #selector(segmentValueChanged), for: .valueChanged)
-        saveStyleView.addSubview(saveTypeSegmentControl)
-    }
-}
 
 extension AddStoreVC {
     @objc private func segmentValueChanged(sender: BetterSegmentedControl){

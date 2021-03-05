@@ -12,7 +12,7 @@
 		610558002110367A00E3175C /* elements.html in Resources */ = {isa = PBXBuildFile; fileRef = 610557FF2110367A00E3175C /* elements.html */; };
 		610558022110367F00E3175C /* images in Resources */ = {isa = PBXBuildFile; fileRef = 610558012110367F00E3175C /* images */; };
 		610558042110368200E3175C /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 610558032110368200E3175C /* assets */; };
-		692965C72109DF38000AD605 /* Storechart.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 692965C62109DF38000AD605 /* Storechart.storyboard */; };
+		692965C72109DF38000AD605 /* Store.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 692965C62109DF38000AD605 /* Store.storyboard */; };
 		6968C757210F0C0300A6FA1A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6968C756210F0C0200A6FA1A /* Assets.xcassets */; };
 		69EBD6F42100719C006B055B /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69EBD6F32100719C006B055B /* HomeVC.swift */; };
 		90CE556D2107342000E20EC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CE556C2107342000E20EC7 /* AppDelegate.swift */; };
@@ -73,7 +73,7 @@
 		610557FF2110367A00E3175C /* elements.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = elements.html; sourceTree = "<group>"; };
 		610558012110367F00E3175C /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = images; sourceTree = "<group>"; };
 		610558032110368200E3175C /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = "<group>"; };
-		692965C62109DF38000AD605 /* Storechart.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storechart.storyboard; sourceTree = "<group>"; };
+		692965C62109DF38000AD605 /* Store.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Store.storyboard; sourceTree = "<group>"; };
 		6968C756210F0C0200A6FA1A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		69EBD6F32100719C006B055B /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		90CE556C2107342000E20EC7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -198,7 +198,7 @@
 		9B42915C25EA5C95000E3B91 /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				692965C62109DF38000AD605 /* Storechart.storyboard */,
+				692965C62109DF38000AD605 /* Store.storyboard */,
 				B817E0A120FC8FF400B2A37C /* Schedule.storyboard */,
 				59CEA7A720FC81D700847485 /* Home.storyboard */,
 			);
@@ -438,7 +438,7 @@
 				B838071A20EDC00700A46B20 /* Main.storyboard in Resources */,
 				6968C757210F0C0300A6FA1A /* Assets.xcassets in Resources */,
 				610557FC2110367200E3175C /* index.html in Resources */,
-				692965C72109DF38000AD605 /* Storechart.storyboard in Resources */,
+				692965C72109DF38000AD605 /* Store.storyboard in Resources */,
 				9B42916225EA5D94000E3B91 /* StockTitleTableCell.xib in Resources */,
 				610558042110368200E3175C /* assets in Resources */,
 				B817E0A220FC8FF400B2A37C /* Schedule.storyboard in Resources */,

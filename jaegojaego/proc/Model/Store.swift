@@ -16,8 +16,7 @@ enum SaveStyle : String {
 }
 
 
-class Store : NSObject, NSCoding
-{
+class Store : NSObject, NSCoding {
     var name: String // 제품 이름
     var UpDate: Date  // 등록 날
     var DownDate: Date // 유통기한
