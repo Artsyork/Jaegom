@@ -13,11 +13,8 @@ class HomeStoreTableViewController : UITableViewController {
         super.viewDidAppear(animated)
         tableView.reloadData()
     }
-}
-
-
-extension HomeStoreTableViewController {
-    func setUpArray() {
+    
+    private func setUpArray() {
         homeStoreFilterByMany = viewModel.returnStockLessItem()
     }
 }
@@ -30,9 +27,7 @@ extension HomeStoreTableViewController {
    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let cell: HomeStoreChartCell = tableView.dequeueReusableCell(withIdentifier: "HStoreCell") as! HomeStoreChartCell
-        
         cell.bindViewModel(stock: homeStoreFilterByMany[indexPath.row])
-      
         return cell
     }
 }

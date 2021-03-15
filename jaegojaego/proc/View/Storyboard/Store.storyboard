@@ -11,9 +11,9 @@
         <!--Add StoreVC-->
         <scene sceneID="4gh-Zt-0lT">
             <objects>
-                <viewController id="jDe-6r-8pk" customClass="AddStoreVC" customModule="proc" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="addStoreVC" id="jDe-6r-8pk" customClass="AddStoreVC" customModule="proc" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ihv-58-vK3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZgO-dw-hgZ" userLabel="saveStylePosition">
@@ -80,7 +80,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hQz-ad-eLk">
-                                <rect key="frame" x="0.0" y="587" width="375" height="60"/>
+                                <rect key="frame" x="0.0" y="607" width="375" height="60"/>
                                 <color key="backgroundColor" red="0.45098039220000002" green="0.58823529409999997" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="MxH-9C-AdL"/>
@@ -356,7 +356,7 @@
                                 </constraints>
                                 <state key="normal" image="plusImg"/>
                                 <connections>
-                                    <segue destination="jDe-6r-8pk" kind="presentation" modalPresentationStyle="automatic" modalTransitionStyle="flipHorizontal" id="dFK-zr-xlm"/>
+                                    <action selector="plusBtn:" destination="QWq-dN-wsM" eventType="touchUpInside" id="pDx-fQ-aHd"/>
                                 </connections>
                             </button>
                         </subviews>

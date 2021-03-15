@@ -9,24 +9,22 @@
 import UIKit
 
 class StockListVC: UIViewController {
-    @IBOutlet weak var stockCollectionView: UICollectionView!
+    @IBOutlet weak var stockCollectionView: UICollectionView! {
+        didSet {
+            stockCollectionView.delegate = self
+            stockCollectionView.dataSource = self
+            stockCollectionView.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+            stockCollectionView.showsHorizontalScrollIndicator = false
+        }
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        self.stockCollectionView.reloadData()
+        stockCollectionView.reloadData()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getCollectionDelegate()
-    }
-    
-    
-    func getCollectionDelegate(){
-        stockCollectionView.delegate = self
-        stockCollectionView.dataSource = self
-        stockCollectionView.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
-        stockCollectionView.showsHorizontalScrollIndicator = false
     }
 }
 

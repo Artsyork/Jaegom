@@ -9,8 +9,10 @@ class HomeStoreChartCell:UITableViewCell {
     @IBOutlet weak var HomeStoreImage: UIImageView! // 저장방법 아이콘
     
     func bindViewModel(stock: Store) {
+        DispatchQueue.main.async { [weak self] in
+            self?.HomeStoreImage.image = UIImage(named: stock.saveStyle.rawValue)
+        }
         HomeStoreName.text = stock.name
-        HomeStoreImage.image = UIImage(named: stock.saveStyle.rawValue)
         HomeStoreMany.text = "\(stock.many) / \(stock.TotalMany)\(stock.manytype)"
     }
 }

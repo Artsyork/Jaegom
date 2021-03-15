@@ -9,7 +9,6 @@
 import Foundation
 
 
-
 // 일정 데이터 정의
 class Schedule : NSObject, NSCoding {
     var scheduleTitle: String // 메모

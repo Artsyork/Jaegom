@@ -9,29 +9,27 @@
 import UIKit
 
 class outStockCollectionCell: UICollectionViewCell {
-    @IBOutlet weak var outStockTV: UITableView!
+    @IBOutlet weak var outStockTV: UITableView! {
+        didSet {
+            outStockTV.delegate = self
+            outStockTV.dataSource = self
+            outStockTV.showsVerticalScrollIndicator = false
+        }
+    }
     
     private let viewModel = StoreViewModel()
     private var sectionArray : [SectionObjects] = []
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        setUpDelegate()
         setUpSubViews()
         setUpArray()
-        outStockTV.reloadData()
     }
 }
 
 
 extension outStockCollectionCell {
-    private func setUpDelegate(){
-        outStockTV.delegate = self
-        outStockTV.dataSource = self
-    }
-    
     private func setUpSubViews(){
-        outStockTV.showsVerticalScrollIndicator = false
         setSubLayer()
         
         outStockTV.register(UINib(nibName: "StockTitleTableCell", bundle: nil), forCellReuseIdentifier: StockTitleTableCell.titleTableCellID)

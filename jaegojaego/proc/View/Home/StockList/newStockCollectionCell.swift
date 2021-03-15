@@ -14,29 +14,27 @@ struct SectionObjects {
 }
 
 class newStockCollectionCell: UICollectionViewCell {
-    @IBOutlet weak var newStockTV: UITableView!
+    @IBOutlet weak var newStockTV: UITableView! {
+        didSet {
+            newStockTV.delegate = self
+            newStockTV.dataSource = self
+            newStockTV.showsVerticalScrollIndicator = false
+        }
+    }
     
     private let viewModel = StoreViewModel()
     private var sectionArray : [SectionObjects] = []
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        setUpDelegate()
         setUpSubViews()
         setUpArray()
-        newStockTV.reloadData()
     }
 }
 
 
 extension newStockCollectionCell {
-    private func setUpDelegate() {
-        newStockTV.delegate = self
-        newStockTV.dataSource = self
-    }
-    
     private func setUpSubViews(){
-        newStockTV.showsVerticalScrollIndicator = false
         setSubLayer()
         
         newStockTV.register(UINib(nibName: "StockTitleTableCell", bundle: nil), forCellReuseIdentifier: StockTitleTableCell.titleTableCellID)

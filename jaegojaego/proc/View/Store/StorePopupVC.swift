@@ -19,7 +19,7 @@ class StorePopupVC: UIViewController, UITextFieldDelegate {
     
     private let viewModel = StoreViewModel()
     private var item : Store?
-    private var delegate : UpdateDelegate?
+    var delegate : StoreVCDelegate?
     var position : Int = 0
     
     
@@ -59,9 +59,7 @@ extension StorePopupVC {
             viewModel.addStock(data: stock)
             viewModel.returnStockTotalCount()
             viewModel.saveData()
-
-            presentingViewController?.viewWillAppear(true)
-            delegate?.didUpDate()
+            delegate?.updateStoreData()
             dismiss(animated: true)
         } else {
             ToastView.shared.short(self.view, txt_msg: "가지고 있는 수량보다 개수가 많거나 숫자가 아닙니다!")

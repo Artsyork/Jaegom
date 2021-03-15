@@ -16,7 +16,9 @@ class StockTitleTableCell: UITableViewCell {
     static let titleTableCellID = "stockTitleTableCell"
     
     func bindViewModel(stockDate: Date, stockTotal: Int, stockImage: Bool){
-        stockImageView.image = stockImage ? UIImage(named: "downloadImg") : UIImage(named: "uploadImg")
+        DispatchQueue.main.async { [weak self] in
+            self?.stockImageView.image = stockImage ? UIImage(named: "downloadImg") : UIImage(named: "uploadImg")
+        }
         stockTotalCountLabel.text = "총 \(stockTotal)개"
         stockDateLabel.text = stockDate.returnString(format: "yyyy. MM. dd")
     }

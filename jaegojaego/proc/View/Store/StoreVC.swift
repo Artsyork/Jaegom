@@ -9,10 +9,26 @@
 import UIKit
 import Foundation
 
+protocol StoreVCDelegate {
+    func updateStoreData()
+}
+
 class StoreVC: UIViewController {
-    @IBOutlet weak var storeListTV: UITableView!
-    @IBOutlet weak var storeSearchBar: UISearchBar!
+    @IBOutlet weak var storeListTV: UITableView! {
+        didSet {
+            storeListTV.delegate = self
+            storeListTV.dataSource = self
+        }
+    }
+    @IBOutlet weak var storeSearchBar: UISearchBar! {
+        didSet {
+            storeSearchBar.delegate = self
+        }
+    }
     @IBOutlet weak var editBtn: UIButton!
+    @IBAction func plusBtn(_ sender: UIButton) {
+        goToAddStoreVC()
+    }
     
     private let viewModel = StoreViewModel()
     private let buttonBar = UIView()
@@ -24,7 +40,6 @@ class StoreVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpDelegate()
         setUpSubViews()
         setUpSegmentBar()
         setUpSearchArray()
@@ -38,18 +53,16 @@ class StoreVC: UIViewController {
 }
 
 
-extension StoreVC : UISearchBarDelegate, UpdateDelegate {
-    private func setUpDelegate(){
-        storeListTV.delegate = self
-        storeListTV.dataSource = self
-        storeSearchBar.delegate = self
-    }
-    
+extension StoreVC : UISearchBarDelegate {
     private func setUpSubViews(){
+        storeListTV.separatorStyle = .none
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        
         view.addSubview(buttonBar)
         view.addSubview(switchSegment)
+        view.addGestureRecognizer(tap)
         
-        storeListTV.separatorStyle = .none
         switchSegment.addTarget(self, action: #selector(StoreVC.segmentControlValueChanged(_:)), for: UIControl.Event.valueChanged)
         editBtn.addTarget(self, action: #selector(editBtnClicked), for: .touchUpInside)
     }
@@ -95,27 +108,20 @@ extension StoreVC : UISearchBarDelegate, UpdateDelegate {
             storeListTV.setEditing(true, animated: true)
         }
     }
-    
-    func didUpDate() {
-        storeListTV.reloadData()
-    }
 }
 
 
 // 테이블 뷰
 extension StoreVC : UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let array = searchArray[selectSegmentNumber] else { return 1}
+        guard let array = searchArray[selectSegmentNumber] else { return 1 }
         return array.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let array = searchArray[selectSegmentNumber] else { return UITableViewCell() }
-        let store = array[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "StoreChartCell") as! storeChartCell
-
-        cell.bindViewModel(store: store)
-        
+        cell.bindViewModel(store: array[indexPath.row])
         return cell
     }
     
@@ -130,7 +136,7 @@ extension StoreVC : UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let array = searchArray[selectSegmentNumber] {
             selectIndex = viewModel.findStockAsStock(data: array[indexPath.row])
-            nextVC()
+            goToStorePopupVC()
         }
     }
     
@@ -142,7 +148,7 @@ extension StoreVC : UITableViewDataSource, UITableViewDelegate {
             viewModel.removeStock(data: viewModel.findStockAsStock(data: array[indexPath.row]))
             storeListTV.deleteRows(at: [indexPath], with: .automatic)
             viewModel.saveData()
-            didUpDate()
+            updateStoreData()
         }
     }
 }
@@ -150,7 +156,11 @@ extension StoreVC : UITableViewDataSource, UITableViewDelegate {
 
 
 // 세그먼트
-extension StoreVC {
+extension StoreVC : StoreVCDelegate {
+    func updateStoreData() {
+        storeListTV.reloadData()
+    }
+    
     private func setUpSegmentBar(){
         switchSegment.insertSegment(withTitle: "폐기 물품", at: 0, animated: true)
         switchSegment.insertSegment(withTitle: "당일 마감", at: 1, animated: true)
@@ -183,7 +193,6 @@ extension StoreVC {
         
         storeListTV.reloadData()
     }
-    
 
     private func setUpButtonLayoutSetting(){
         buttonBar.backgroundColor = UIColor(red: 0.26, green: 0.43, blue: 0.85, alpha: 1.0)
@@ -194,11 +203,25 @@ extension StoreVC {
         buttonBar.widthAnchor.constraint(equalTo: switchSegment.widthAnchor, multiplier: 1 / CGFloat(switchSegment.numberOfSegments)).isActive = true
     }
     
-    private func nextVC(){
+    @objc private func dismissKeyboard(){
+        view.endEditing(true)
+    }
+
+    private func goToStorePopupVC(){
         let vc : StorePopupVC = storyboard?.instantiateViewController(withIdentifier: "storePopupVC") as! StorePopupVC
         vc.position = selectIndex
+        vc.delegate = self
         vc.modalTransitionStyle = .crossDissolve
         vc.modalPresentationStyle = .overCurrentContext
+        
+        present(vc, animated: true)
+    }
+    
+    private func goToAddStoreVC(){
+        let vc : AddStoreVC = storyboard?.instantiateViewController(withIdentifier: "addStoreVC") as! AddStoreVC
+        vc.delegate = self
+        vc.modalTransitionStyle = .flipHorizontal
+        vc.modalPresentationStyle = .fullScreen
         
         present(vc, animated: true)
     }

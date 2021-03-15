@@ -10,14 +10,10 @@ import Foundation
 
 class StoreViewModel {
     private var StockArray : [Store] = []
-    private var StockPerDateArray : [Date : [Store]] = [:]
-    
-    private let projectName = "JaegoJaego"
-    private let mainFileName = "JaegoList_Main.file"
     
     private var mainFilePath : String { get {
         let documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
-        return documentDirectory + "/" + projectName + "/" + mainFileName
+        return documentDirectory + "/JaegoJaego/JaegoList.file"
         }
     }
     
@@ -28,6 +24,10 @@ class StoreViewModel {
 
 
 extension StoreViewModel {
+    func returnFullArray() -> [Store] {
+        return StockArray
+    }
+    
     func returnBuyStockArray() -> [Store] {
         return StockArray.filter { $0.many > 0 }
     }
@@ -156,12 +156,12 @@ extension StoreViewModel {
         }
     }
     
-    private func setArchiveFile(){
-        if FileManager.default.fileExists(atPath: mainFilePath){ //read
+    func setArchiveFile(){
+        if FileManager.default.fileExists(atPath: mainFilePath) {
             if let mainarray = NSKeyedUnarchiver.unarchiveObject(withFile: mainFilePath) as? [Store] {
-                StockArray = mainarray
+                StockArray += mainarray
             }
-        } else { StockArray = setDefaultData() }
+        } else { StockArray += setDefaultData() }
     }
     
     private func setDefaultData() -> [Store] {
@@ -186,6 +186,6 @@ extension StoreViewModel {
     }
     
     func saveData() {
-        NSKeyedArchiver.archiveRootObject(self.StockArray, toFile: self.mainFilePath)
+        NSKeyedArchiver.archiveRootObject(StockArray, toFile: mainFilePath)
     }
 }

@@ -9,10 +9,12 @@ class storeChartCell : UITableViewCell {
     @IBOutlet weak var labelMany:UILabel!
     
     func bindViewModel(store: Store){
+        DispatchQueue.main.async { [weak self] in
+            self?.labelSaveStyle.image = UIImage(named: store.saveStyle.rawValue)
+            self?.ChartImage.image = UIImage(named: store.Image)
+        }
         labelName.text = store.name
-        labelSaveStyle.image = UIImage(named: store.saveStyle.rawValue)
         labelDownDate.text = store.DownDate.returnString(format: "yyyy. MM. dd")
         labelMany.text = "\(store.many)\(store.manytype)"
-        ChartImage.image = UIImage(named: store.Image)
     }
 }

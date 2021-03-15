@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17511" systemVersion="19E266" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="StoreBox" representedClassName="StoreBox" syncable="YES" codeGenerationType="class">
+        <attribute name="storeArray" optional="YES" attributeType="Transformable"/>
+    </entity>
+    <entity name="StoreEntity" representedClassName="StoreEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="downdate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="many" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="manytype" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="savestyle" optional="YES" attributeType="Transformable"/>
+        <attribute name="update" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+    </entity>
+    <elements>
+        <element name="StoreEntity" positionX="-63" positionY="-18" width="128" height="28"/>
+        <element name="StoreBox" positionX="-54" positionY="-9" width="128" height="28"/>
+    </elements>
+</model>

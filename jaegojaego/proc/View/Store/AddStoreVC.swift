@@ -27,6 +27,7 @@ class AddStoreVC: UIViewController {
     private var stockDate = Date()
     private var stockType = SaveStyle.Fresh
     private var dataFilePath : String?
+    var delegate : StoreVCDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +48,16 @@ extension AddStoreVC {
     }
     
     private func setUpSegment(){
-        let saveTypeSegmentControl = BetterSegmentedControl(frame: CGRect(x: (view.frame.width - 310) / 2 , y: 40, width: 317, height: 56), segments: LabelSegment.segments(withTitles: ["실온", "냉장", "냉동"], normalBackgroundColor: .white, normalTextColor: UIColor.init(hex: "#7396D0"), selectedBackgroundColor: UIColor.init(hex: "#7396D0"), selectedTextColor: .white), index: 0, options: [.backgroundColor(UIColor.init(hex: "#7396D0")), .indicatorViewBackgroundColor(.white) ])
+        let saveTypeSegmentControl = BetterSegmentedControl(
+            frame: CGRect(x: 35, y: 40, width: view.bounds.width - 70, height: 56),
+            segments: LabelSegment.segments(withTitles: ["실온", "냉장", "냉동"],
+            normalBackgroundColor: .white,
+            normalTextColor: UIColor.init(hex: "#7396D0"),
+            selectedBackgroundColor: UIColor.init(hex: "#7396D0"),
+            selectedTextColor: .white),
+            index: 0,
+            options: [.backgroundColor(UIColor.init(hex: "#7396D0")), .indicatorViewBackgroundColor(.white)])
+        
         saveTypeSegmentControl.layer.borderWidth = 3
         saveTypeSegmentControl.layer.borderColor = UIColor.init(hex: "#7396D0").cgColor
         saveTypeSegmentControl.layer.cornerRadius = 7
@@ -103,15 +113,13 @@ extension AddStoreVC {
         
         /// 나중에 기본 값으로 빠르게 넘어가는 걸로 변경
         if stockName.isEmpty == false && stockMany.isEmpty == false && stockManyType.isEmpty == false {
-            
-            let stockManyToInt = Int(stockMany)!
+            let stockManyToInt = Int(stockMany) ?? 0
             let stock = Store(name: stockName, UpDate: Date(), DownDate: stockDate, many: stockManyToInt, manytype: stockManyType, saveStyle: stockType)
             
             viewModel.addStock(data: stock)
             viewModel.saveData()
-            /// 작동하니..?
-            presentingViewController?.viewWillAppear(true)
-            dismiss(animated: true, completion: nil)
+            delegate?.updateStoreData()
+            dismiss(animated: true)
         }
         else {
             ToastView.shared.short(self.view, txt_msg: "입력되지 않은 정보가 있습니다.")

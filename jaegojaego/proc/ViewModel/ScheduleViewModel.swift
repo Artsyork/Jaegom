@@ -11,12 +11,9 @@ import Foundation
 class ScheduleViewModel {
     private var ScheduleArray : [Schedule] = []
     
-    private let projectName = "JaegoJaego"
-    private let scheduleFileName = "JaegoSchedule.file"
-    
     private var schedulFilePath : String { get {
         let documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
-        return documentDirectory + "/" + projectName + "/" + scheduleFileName
+        return documentDirectory + "/JaegoJaego/JaegoSchedule.file"
         }
     }
     
@@ -50,9 +47,9 @@ extension ScheduleViewModel {
     private func setArchiveFile(){
         if FileManager.default.fileExists(atPath: self.schedulFilePath){
             if let scheduleArrayList = NSKeyedUnarchiver.unarchiveObject(withFile: self.schedulFilePath) as? [Schedule] {
-                ScheduleArray = scheduleArrayList
+                ScheduleArray += scheduleArrayList
             }
-        } else { ScheduleArray = setDefaultData() }
+        } else { ScheduleArray += setDefaultData() }
     }
     
     private func setDefaultData() -> [Schedule]{

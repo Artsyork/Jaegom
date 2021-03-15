@@ -22,11 +22,12 @@
 		9B0F2B2521F84DC8003DB228 /* StockSubTitleTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0F2B2421F84DC8003DB228 /* StockSubTitleTableCell.swift */; };
 		9B2146EB231D17D90015BBBF /* TabBarExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2146EA231D17D90015BBBF /* TabBarExtention.swift */; };
 		9B23A7E6220075A100BB2DE1 /* AddStoreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B23A7E5220075A100BB2DE1 /* AddStoreVC.swift */; };
+		9B3CE8E825F274F600EB1361 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9B3CE8E625F274F600EB1361 /* Model.xcdatamodeld */; };
+		9B3CE8F025F2765300EB1361 /* StoreEntity+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3CE8EF25F2765300EB1361 /* StoreEntity+CoreData.swift */; };
 		9B42914A25EA1F33000E3B91 /* StockSubTitleTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B42914925EA1F33000E3B91 /* StockSubTitleTableCell.xib */; };
 		9B42916225EA5D94000E3B91 /* StockTitleTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B42916125EA5D94000E3B91 /* StockTitleTableCell.xib */; };
 		9B42918625EA66CC000E3B91 /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B42918525EA66CC000E3B91 /* ScheduleViewModel.swift */; };
 		9B7D618425E63F7E00609FA9 /* StoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7D618325E63F7E00609FA9 /* StoreViewModel.swift */; };
-		9B90AAE022169E0E00C3AC48 /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B90AADF22169E0E00C3AC48 /* Protocol.swift */; };
 		9BA3F83F21F59885008577BB /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA3F83E21F59885008577BB /* Extension.swift */; };
 		9BA3F84121F59987008577BB /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA3F84021F59987008577BB /* ToastView.swift */; };
 		9BA3F84321F59F77008577BB /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA3F84221F59F77008577BB /* Store.swift */; };
@@ -84,11 +85,12 @@
 		9B0F2B2421F84DC8003DB228 /* StockSubTitleTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockSubTitleTableCell.swift; sourceTree = "<group>"; };
 		9B2146EA231D17D90015BBBF /* TabBarExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarExtention.swift; sourceTree = "<group>"; };
 		9B23A7E5220075A100BB2DE1 /* AddStoreVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStoreVC.swift; sourceTree = "<group>"; };
+		9B3CE8E725F274F600EB1361 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		9B3CE8EF25F2765300EB1361 /* StoreEntity+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StoreEntity+CoreData.swift"; sourceTree = "<group>"; };
 		9B42914925EA1F33000E3B91 /* StockSubTitleTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StockSubTitleTableCell.xib; sourceTree = "<group>"; };
 		9B42916125EA5D94000E3B91 /* StockTitleTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StockTitleTableCell.xib; sourceTree = "<group>"; };
 		9B42918525EA66CC000E3B91 /* ScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewModel.swift; sourceTree = "<group>"; };
 		9B7D618325E63F7E00609FA9 /* StoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreViewModel.swift; sourceTree = "<group>"; };
-		9B90AADF22169E0E00C3AC48 /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
 		9BA3F83E21F59885008577BB /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		9BA3F84021F59987008577BB /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		9BA3F84221F59F77008577BB /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 			children = (
 				9BA3F84221F59F77008577BB /* Store.swift */,
 				9BA3F84621F59FB7008577BB /* Schedule.swift */,
+				9B3CE8EF25F2765300EB1361 /* StoreEntity+CoreData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -239,7 +242,6 @@
 			children = (
 				9BA3F83E21F59885008577BB /* Extension.swift */,
 				9BA3F84021F59987008577BB /* ToastView.swift */,
-				9B90AADF22169E0E00C3AC48 /* Protocol.swift */,
 				9B2146EA231D17D90015BBBF /* TabBarExtention.swift */,
 			);
 			path = Extension;
@@ -284,6 +286,7 @@
 				9B42915D25EA5CC1000E3B91 /* View */,
 				B838071820EDC00700A46B20 /* Main.storyboard */,
 				B838071D20EDC00900A46B20 /* LaunchScreen.storyboard */,
+				9B3CE8E625F274F600EB1361 /* Model.xcdatamodeld */,
 			);
 			path = proc;
 			sourceTree = "<group>";
@@ -507,7 +510,6 @@
 			files = (
 				B8F2B3522109FAAB008FC382 /* ScheduleLittleTableCell.swift in Sources */,
 				B8DFC247210710BF00626614 /* storeChartCell.swift in Sources */,
-				9B90AAE022169E0E00C3AC48 /* Protocol.swift in Sources */,
 				B8DFC2422106EC3500626614 /* ScheduleViewController.swift in Sources */,
 				9BA3F83F21F59885008577BB /* Extension.swift in Sources */,
 				9B01DDB8221E8D300074D3E5 /* StorePopupVC.swift in Sources */,
@@ -517,6 +519,8 @@
 				9B23A7E6220075A100BB2DE1 /* AddStoreVC.swift in Sources */,
 				9B7D618425E63F7E00609FA9 /* StoreViewModel.swift in Sources */,
 				9B42918625EA66CC000E3B91 /* ScheduleViewModel.swift in Sources */,
+				9B3CE8F025F2765300EB1361 /* StoreEntity+CoreData.swift in Sources */,
+				9B3CE8E825F274F600EB1361 /* Model.xcdatamodeld in Sources */,
 				B80B28F02109B9FB00413049 /* HomeStoreTableViewController.swift in Sources */,
 				9B0F2B2321F83E33003DB228 /* StockTitleTableCell.swift in Sources */,
 				9BA3F84121F59987008577BB /* ToastView.swift in Sources */,
@@ -865,6 +869,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		9B3CE8E625F274F600EB1361 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				9B3CE8E725F274F600EB1361 /* Model.xcdatamodel */,
+			);
+			currentVersion = 9B3CE8E725F274F600EB1361 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = B838070920EDC00700A46B20 /* Project object */;
 }

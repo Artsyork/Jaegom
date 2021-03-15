@@ -52,14 +52,14 @@ extension SchedulePopupVC : UITextFieldDelegate {
     
     @objc func keyboardWillShow(_ sender: Notification) {
         popupTFBottomConstraint.constant = 212
-        UIView.animate(withDuration: 0.3, animations: {
-            self.view.layoutIfNeeded()
+        UIView.animate(withDuration: 0.3, animations: { [weak self] in
+            self?.view.layoutIfNeeded()
         })
     }
     @objc func keyboardWillHide(_ sender: Notification){
         popupTFBottomConstraint.constant = 0
-        UIView.animate(withDuration: 0.3, animations: {
-            self.view.layoutIfNeeded()
+        UIView.animate(withDuration: 0.3, animations: { [weak self] in
+            self?.view.layoutIfNeeded()
         })
     }
 

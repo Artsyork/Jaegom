@@ -3,7 +3,12 @@ import Foundation
 import FSCalendar
 
 class ScheduleViewController : UIViewController {
-    @IBOutlet weak var calendar_table: UITableView!
+    @IBOutlet weak var calendar_table: UITableView! {
+        didSet {
+            calendar_table.dataSource = self
+            calendar_table.delegate = self
+        }
+    }
     @IBOutlet weak var ourCalendar: FSCalendar!
     
     private let viewModel = ScheduleViewModel()
@@ -13,7 +18,6 @@ class ScheduleViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNavigationBar()
-        setUpDelegate()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -24,16 +28,12 @@ class ScheduleViewController : UIViewController {
 
 
 extension ScheduleViewController {
-    private func setUpDelegate(){
-        calendar_table.dataSource = self
-        calendar_table.delegate = self
-    }
-    
     private func setUpNavigationBar(){
-        let bar : UINavigationBar! =  self.navigationController?.navigationBar
-        bar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        bar.shadowImage = UIImage()
-        bar.backgroundColor = UIColor.clear
+        if let bar = navigationController?.navigationBar {
+            bar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+            bar.shadowImage = UIImage()
+            bar.backgroundColor = UIColor.clear
+        }
     }
     
     private func setUpReloadData(){
@@ -53,9 +53,7 @@ extension ScheduleViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "littleScheduleCell", for: indexPath) as! ScheduleLittleTableCell
-        
         cell.bindViewModel(title: filteredData[indexPath.row] .scheduleTitle)
-       
         return cell
     }
     
